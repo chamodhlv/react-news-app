@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CategorySelector from "./components/CategorySelector";
 import axios from "axios";
+import NewsList from "./components/NewsList";
 
 function App() {
   const [news, setNews] = useState([]);
@@ -47,7 +48,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <header className="bg-blue-900 text-white p-4">
+      <header className="bg-blue-900 text-white p-4 mb-4">
         <div className="container mx-auto">
           <h1 className="text-4xl font-bold">News App</h1>
         </div>
@@ -70,6 +71,7 @@ function App() {
           </div>
         )}
         {error && <div className="alert alert-error">{error}</div>}
+        {!loading && !error && <NewsList articles={news} />}
       </main>
     </div>
   );

@@ -46,6 +46,9 @@ function App() {
           <h1 className="text-4xl font-bold">News App</h1>
         </div>
       </header>
+      <main className="container mx-auto p-4 text-gray-700 font-bold text-xl">
+        Categories
+      </main>
     </div>
   );
 }

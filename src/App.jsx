@@ -39,7 +39,15 @@ function App() {
     fetchNews();
   }, [category, currentPage]);
 
-  return <div>React News App</div>;
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-blue-600 text-white p-4">
+        <div className="container mx-auto">
+          <h1 className="text-4xl font-bold">News App</h1>
+        </div>
+      </header>
+    </div>
+  );
 }
 
 export default App;

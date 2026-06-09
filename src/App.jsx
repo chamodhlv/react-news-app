@@ -46,17 +46,30 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-blue-600 text-white p-4">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <header className="bg-blue-900 text-white p-4">
         <div className="container mx-auto">
           <h1 className="text-4xl font-bold">News App</h1>
         </div>
       </header>
       <main className="container mx-auto p-4  font-bold text-xl">
-        <CategorySelector
-          category={category}
-          onCategoryChange={handleCategoryChange}
-        />
+        <div>
+          <CategorySelector
+            category={category}
+            onCategoryChange={handleCategoryChange}
+          />
+        </div>
+        <div>
+          <p className="text-gray-500 text-medium mb-4 justify-center flex p-3">
+            Total Results: {totalResults}
+          </p>
+        </div>
+        {loading && (
+          <div className="flex justify-center items-center ">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
+        )}
+        {error && <div className="alert alert-error">{error}</div>}
       </main>
     </div>
   );

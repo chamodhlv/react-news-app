@@ -1,6 +1,6 @@
 import React from "react";
 
-const categorySelector = ({ category, onCategoryChange }) => {
+const CategorySelector = ({ category, onCategoryChange }) => {
   const categories = [
     { id: "general", name: "General" },
     { id: "business", name: "Business" },
@@ -12,20 +12,22 @@ const categorySelector = ({ category, onCategoryChange }) => {
   ];
 
   return (
-    <div className="flex justify-around mb-4">
-      <div>
-        {categories.map((cat) => (
-          <button
-            onClick={() => onCategoryChange(cat.id)}
-            className={`px-4 py-2 rounded-md ${category === cat.id ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-700"}`}
-            key={cat.id}
-          >
-            {cat.name}
-          </button>
-        ))}
-      </div>
+    <div className="flex justify-center flex-wrap gap-2 mb-4">
+      {categories.map((cat) => (
+        <button
+          key={cat.id}
+          onClick={() => onCategoryChange(cat.id)}
+          className={`px-4 py-2 rounded-md ${
+            category === cat.id
+              ? "bg-blue-600 text-white"
+              : "bg-gray-300 text-gray-700 hover:bg-blue-200 *:**:not-[]:"
+          }`}
+        >
+          {cat.name}
+        </button>
+      ))}
     </div>
   );
 };
 
-export default categorySelector;
+export default CategorySelector;

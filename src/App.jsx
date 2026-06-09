@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CategorySelector from "./components/CategorySelector";
 import axios from "axios";
 
 function App() {
@@ -39,6 +40,11 @@ function App() {
     fetchNews();
   }, [category, currentPage]);
 
+  const handleCategoryChange = (newCategory) => {
+    setCategory(newCategory);
+    setCurrentPage(1); // Reset to first page when category changes
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="bg-blue-600 text-white p-4">
@@ -46,8 +52,11 @@ function App() {
           <h1 className="text-4xl font-bold">News App</h1>
         </div>
       </header>
-      <main className="container mx-auto p-4 text-gray-700 font-bold text-xl">
-        Categories
+      <main className="container mx-auto p-4  font-bold text-xl">
+        <CategorySelector
+          category={category}
+          onCategoryChange={handleCategoryChange}
+        />
       </main>
     </div>
   );

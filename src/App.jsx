@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import CategorySelector from "./components/CategorySelector";
 import axios from "axios";
 import NewsList from "./components/NewsList";
+import Pagination from "./components/Pagination";
 
 function App() {
   const [news, setNews] = useState([]);
@@ -46,6 +47,18 @@ function App() {
     setCurrentPage(1); // Reset to first page when category changes
   };
 
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <header className="bg-blue-900 text-white p-4 mb-4">
@@ -72,6 +85,16 @@ function App() {
         )}
         {error && <div className="alert alert-error">{error}</div>}
         {!loading && !error && <NewsList articles={news} />}
+        {totalPages > 1 && (
+          <div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPrevious={handlePreviousPage}
+              onNext={handleNextPage}
+            />
+          </div>
+        )}
       </main>
     </div>
   );

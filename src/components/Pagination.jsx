@@ -7,9 +7,11 @@ function Pagination({ currentPage, totalPages, onPrevious, onNext }) {
   return (
     <div className="flex justify-center mt-4">
       <button
-        className="btn bg-blue-900 hover:bg-blue-700 text-white font-bold"
+        className={
+          `btn bg-blue-900 hover:bg-blue-700 text-white font-bold` +
+          (disablePrevious ? " opacity-50 cursor-not-allowed" : "")
+        }
         onClick={onPrevious}
-        disabled={disablePrevious}
       >
         Previous
       </button>
@@ -17,9 +19,11 @@ function Pagination({ currentPage, totalPages, onPrevious, onNext }) {
         Page {currentPage} of {totalPages}
       </span>
       <button
-        className="btn bg-blue-900 hover:bg-blue-700 text-white font-bold"
+        className={
+          `btn bg-blue-900 hover:bg-blue-700 text-white font-bold` +
+          (disableNext ? " opacity-50 cursor-not-allowed" : "")
+        }
         onClick={onNext}
-        disabled={disableNext}
       >
         Next
       </button>
